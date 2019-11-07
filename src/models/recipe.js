@@ -27,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Recipe.associate = function(db) {
     db.Recipe.belongsToMany(db.Ingredient, { through: 'IngredientRecipe' });
-    db.Recipe.belongsToMany(db.User, { through: 'RecipeUser' });
   };
 
   return Recipe;

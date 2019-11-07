@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Ingredient.associate = function(db) {
     db.Ingredient.belongsToMany(db.Recipe, { through: 'IngredientRecipe' });
-    db.Ingredient.belongsToMany(db.User, { through: 'IngredientUser' });
   };
 
   return Ingredient;
