@@ -10,7 +10,6 @@ const port = process.env.PORT || 3001;
 
 const router = require('./routes');
 const { sequelize } = require('./db');
-const { auth } = require('./utils/middlewares');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

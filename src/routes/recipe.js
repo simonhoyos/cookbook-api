@@ -4,12 +4,10 @@ const router = require('express').Router();
 const recipe = require('../controllers/recipe');
 const { auth } = require('../utils/middlewares');
 
-router.use(auth);
-
-router.get('/recipe', recipe.list);
-router.post('/recipe', recipe.create);
-router.get('/recipe/:id', recipe.show);
-router.put('/recipe/:id', recipe.update);
-router.delete('/recipe/:id', recipe.destroy);
+router.get('/recipe', auth, recipe.list);
+router.post('/recipe', auth, recipe.create);
+router.get('/recipe/:id', auth, recipe.show);
+router.put('/recipe/:id', auth, recipe.update);
+router.delete('/recipe/:id', auth, recipe.destroy);
 
 module.exports = router;

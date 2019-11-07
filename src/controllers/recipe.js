@@ -6,11 +6,8 @@ module.exports = {
   async list(req, res) {
     try {
       const recipes = await Recipe
-        .findAll({
-          include: {
-            model: Ingredient
-          }
-        });
+        .scope({ include: [ Ingredient ]})
+        .findAll();
       res.send(recipes)
     } catch (error) {
       res.status(403).send({ error });
@@ -39,7 +36,10 @@ module.exports = {
   },
   async show(req, res) {
     try {
-      const recipe = await Recipe.findByPk(req.params.id);
+      const recipe = await Recipe
+        .scope({ include: [ Ingredient ]})
+        .findByPk(req.params.id);
+
       res.send(recipe);
     } catch (error) {
       res.status(403).send({ error });
